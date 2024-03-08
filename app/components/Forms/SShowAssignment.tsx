@@ -8,6 +8,7 @@ import { useSession } from "next-auth/react";
 import GradeAssignment from "./GradeAssignment";
 import SUploadAssignment from "./SUploadAssignment";
 import { IM_Fell_Great_Primer_SC } from "next/font/google";
+import Grades from "./Grades";
 
 export default function ShowAssignment(props: {
   assignmentId: string;
@@ -31,14 +32,17 @@ export default function ShowAssignment(props: {
 
   const creatorId = CourseCreators?.creatorId;
   return (
-    <div className="p-5">
+    <div className="p-5 w-[1000px]">
       {isLoading ? (
         <p>Loading...</p>
       ) : (
         assignmentInfos?.map((assignmentInfo) => (
-          <div className="flex" key={assignmentInfo.id}>
-            <div>
-              <p>{assignmentInfo.title}</p>
+          <div
+            className="flex flex-row justify-between items-center w-full"
+            key={assignmentInfo.id}
+          >
+            <div className="flex flex-col gap-2">
+              <p className="text-xl">{assignmentInfo.title}</p>
               <p>{assignmentInfo.description}</p>
               <iframe
                 src={assignmentInfo.reference as string}
@@ -46,9 +50,11 @@ export default function ShowAssignment(props: {
                 width={200}
               ></iframe>
               <p>{assignmentInfo?.dueDate}</p>
-              <p>Marks: {assignmentInfo.marks}/</p>
+              <p>
+                <Grades assignmentId={props.assignmentId} />
+              </p>
             </div>
-            <div className="justify-end right-3">
+            <div className="">
               {userId === creatorId ? (
                 <div>
                   <GradeAssignment assignmentId={props.assignmentId} />

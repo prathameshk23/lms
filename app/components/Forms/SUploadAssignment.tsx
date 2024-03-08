@@ -1,14 +1,18 @@
-"use client"
+"use client";
 import React, { useState } from "react";
 import { UploadButton, UploadDropzone } from "@/app/utils/uploadthing";
 import Image from "next/image";
 import { Button } from "../ui/button";
 import { addSubmission } from "@/app/action";
-export default function SUploadAssignment(props:{assignmentId:string}) {
-    const [imageUrl, setImageUrl] = useState<string>("");
+export default function SUploadAssignment(props: { assignmentId: string }) {
+  const [imageUrl, setImageUrl] = useState<string>("");
   return (
     <div>
-      <form method="post" action={addSubmission}>
+      <form
+        method="post"
+        action={addSubmission}
+        className="flex justify-center items-center flex-col"
+      >
         <UploadDropzone
           className="ut-button:bg-neutral-800 justify-items-end"
           endpoint="imageUploader"
@@ -37,8 +41,7 @@ export default function SUploadAssignment(props:{assignmentId:string}) {
           name="assignmentId"
           value={props.assignmentId}
         ></input>
-        <Button className="justify-between" type="submit">
-          {" "}
+        <Button className="mt-3" type="submit">
           Submit
         </Button>
       </form>

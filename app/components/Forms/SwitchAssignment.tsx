@@ -23,7 +23,6 @@ function SwitchAssignment(props: { courseId: string }) {
     <div>
       <main className="flex flex-col px-24 py-10">
         <div className="px-2">
-          <p className="font-bold  text-lg"> Class</p>
           <button className=""></button>
           <hr></hr>
         </div>
