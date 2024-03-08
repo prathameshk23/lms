@@ -4,9 +4,9 @@ import { Color } from "@tiptap/extension-color";
 import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import { ToolBar } from "./ToolBar";
-import Heading from "@tiptap/extension-heading"
-import Blockquote from "@tiptap/extension-blockquote"
-import OrderedList from "@tiptap/extension-blockquote"
+import Heading from "@tiptap/extension-heading";
+import Blockquote from "@tiptap/extension-blockquote";
+import OrderedList from "@tiptap/extension-blockquote";
 import ListItem from "@tiptap/extension-list-item";
 import Highlight from "@tiptap/extension-highlight";
 import CodeBlock from "@tiptap/extension-code-block";
@@ -59,18 +59,18 @@ export default function TipTap({
         languageClassPrefix: "language-",
       }),
     ],
-  
+
     onUpdate({ editor }) {
       onChange(editor.getHTML());
       console.log(editor.getHTML());
     },
   });
-  const document_value = editor?.getHTML()
+  const document_value = editor?.getHTML();
   return (
     <div className="border-2 rounded-md border-neutral-950">
       <ToolBar editor={editor} />
       <EditorContent editor={editor} />
-      <input name="note_desc" className="" type="text" value={document_value}></input>
+      {/* <input name="note_desc" className="" type="text" value={document_value}></input> */}
     </div>
   );
 }

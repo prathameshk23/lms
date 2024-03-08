@@ -1,10 +1,21 @@
 import { addmaterial } from "@/app/action";
 import { UploadButton } from "@/app/utils/uploadthing";
 import Image from "next/image";
-import { useState } from "react";
+import { useRef, useState } from "react";
+import toast from "react-hot-toast";
 
 export default function AddMaterial(props: { courseId: string }) {
   const [imageUrl, setImageUrl] = useState<string>("");
+  const formRef = useRef<HTMLFormElement>(null);
+  async function handleSubmit(formData: FormData) {
+    try {
+      await addmaterial(formData);
+      toast.success("Material added successfully");
+      formRef.current?.reset();
+    } catch (e) {
+      console.error(e);
+    }
+  }
   return (
     <main className="flex flex-col px-24 py-10">
       <div className="px-2">
@@ -14,7 +25,7 @@ export default function AddMaterial(props: { courseId: string }) {
       </div>
 
       <div className="bg-white rounded-md p-5">
-        <form method="post" action={addmaterial}>
+        <form method="post" action={handleSubmit} ref={formRef}>
           <p>Add title : </p>
           <input
             className="bg-neutral-800 text-white p-1 text-sm rounded-md border-slate-700 border-2"
