@@ -1,11 +1,9 @@
 import {
   BarChartHorizontal,
   BotIcon,
-  CatIcon,
   LayoutDashboard,
   MessageCircleMore,
   Plus,
-  Settings,
 } from "lucide-react";
 
 export const links = [
@@ -33,11 +31,6 @@ export const links = [
     name: "Classes",
     href: "/dash/class",
     icon: LayoutDashboard,
-  },
-  {
-    name: "Settings",
-    href: "#",
-    icon: Settings,
   },
   {
     name: "Chat with AI",

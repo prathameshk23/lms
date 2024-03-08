@@ -13,7 +13,7 @@ export default function TeachListAssignments(props: { courseId: string }) {
   });
 
   return (
-    <div className="p-5">
+    <div className="p-5 flex flex-col gap-3">
       {isLoading ? (
         <p>Loading...</p>
       ) : (

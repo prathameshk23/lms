@@ -9,7 +9,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "../ui/dialog";
-import { formatDate } from "date-fns"; 
+import { formatDate } from "date-fns";
 import React, { useState } from "react";
 import { UploadButton } from "@/app/utils/uploadthing";
 import Image from "next/image";
@@ -29,12 +29,14 @@ export default function AddAssignments(props: { courseId: string }) {
   // const [due, setdue] = useState("")
   // const [marks, setmarks] = useState("");
   const [date, setDate] = React.useState<Date | undefined>(new Date());
-  const [time,setTime] = React.useState<string>("");
+  const [time, setTime] = React.useState<string>("");
   const [imageUrl, setImageUrl] = useState<string>("");
-  const combinedValue = time ? `${time}, ${formatDate(date as Date, "PP")}` : formatDate(date as Date, "PP");
+  const combinedValue = time
+    ? `${time}, ${formatDate(date as Date, "PP")}`
+    : formatDate(date as Date, "PP");
   // const datetimeObject = new Date(combinedValue);
   // const isoDatetime = datetimeObject.toISOString();
-  // console.log(isoDatetime); 
+  // console.log(isoDatetime);
   // const handleSubmit = async (formData : FormData) => {
   //   setTitle("");
   //   setDesc("");
@@ -85,8 +87,7 @@ export default function AddAssignments(props: { courseId: string }) {
             value={props.courseId}
           ></input>
           <p>Choose File : </p>
-          <div className="justify-start items-start">
-            {" "}
+          <div className="flex justify-start ">
             <UploadButton
               className="ut-button:bg-neutral-800 justify-start"
               endpoint="imageUploader"
@@ -104,11 +105,7 @@ export default function AddAssignments(props: { courseId: string }) {
 
           {imageUrl.length ? (
             <div>
-              <iframe
-                src={imageUrl}
-                height={100}
-                width={200}
-              ></iframe>{" "}
+              <iframe src={imageUrl} height={100} width={200}></iframe>{" "}
             </div>
           ) : null}
 

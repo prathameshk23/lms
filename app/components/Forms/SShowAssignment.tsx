@@ -9,7 +9,10 @@ import GradeAssignment from "./GradeAssignment";
 import SUploadAssignment from "./SUploadAssignment";
 import { IM_Fell_Great_Primer_SC } from "next/font/google";
 
-export default function ShowAssignment(props: { assignmentId: string ,courseId :string}) {
+export default function ShowAssignment(props: {
+  assignmentId: string;
+  courseId: string;
+}) {
   const [imageUrl, setImageUrl] = useState<string>("");
   const { data: assignmentInfos, isLoading } = useQuery({
     queryKey: ["assignmentInfo"],
