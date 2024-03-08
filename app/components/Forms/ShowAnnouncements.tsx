@@ -18,7 +18,7 @@ export async function ShowAnnouncements(props: { courseId: string }) {
   return (
     <div className="mt-4 flex flex-col gap-4">
       {announcement.map((stu) => (
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4" key={stu.author.id}>
           <div className="bg-slate-200  text-neutral-700 rounded-md p-3 flex flex-col gap-3">
             <div className="text-lg flex flex-row gap-2">
               <Image

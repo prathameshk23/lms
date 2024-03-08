@@ -28,7 +28,10 @@ export default function GradeAssignment(props: { assignmentId: string }) {
         <p>Loading....</p>
       ) : (
         submissions?.map((submission) => (
-          <div className="bg-purple-300 flex gap-3 justify-between rounded-md p-3">
+          <div
+            key={submission.id}
+            className="bg-purple-300 flex gap-3 justify-between rounded-md p-3"
+          >
             <Link href={submission.content as string}>
               <div className="flex gap-3">
                 <BookCheck />

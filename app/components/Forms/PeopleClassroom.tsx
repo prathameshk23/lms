@@ -43,7 +43,10 @@ export default async function PeopleClassroom({
       <div>
         <p className="items-center p-2">Students</p>
         {enrolledStudents?.map((students) => (
-          <Link href={`/dash/message/${courseId}/${userId}--${students.id}`}>
+          <Link
+            href={`/dash/message/${courseId}/${userId}--${students.id}`}
+            key={students.id}
+          >
             <div className="flex gap-3">
               <Image
                 width={30}

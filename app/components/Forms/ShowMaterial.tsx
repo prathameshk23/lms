@@ -1,12 +1,12 @@
-"use client"
+"use client";
 import { getMaterial } from "@/app/utils/action";
 import { useQuery } from "@tanstack/react-query";
-import {StickyNoteIcon} from "lucide-react"
+import { StickyNoteIcon } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link"
+import Link from "next/link";
 export default function ShowMaterial(props: { courseId: string }) {
-  const { data : materials,isLoading } = useQuery({
-    queryKey:["material"],
+  const { data: materials, isLoading } = useQuery({
+    queryKey: ["material"],
     queryFn: async () => {
       return getMaterial(props.courseId);
     },
@@ -17,7 +17,7 @@ export default function ShowMaterial(props: { courseId: string }) {
         <p>Loading...</p>
       ) : (
         materials?.map((material) => (
-          <Link href={material.material}>
+          <Link href={material.material} key={material.id}>
             <div
               key={material.id}
               className="bg-violet-400 flex p-5  rounded-md justify-between"
