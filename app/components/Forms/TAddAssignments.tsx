@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import { formatDate } from "date-fns";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { UploadButton } from "@/app/utils/uploadthing";
 import Image from "next/image";
 import { Button } from "../ui/button";
@@ -31,6 +31,7 @@ export default function AddAssignments(props: { courseId: string }) {
   const [date, setDate] = React.useState<Date | undefined>(new Date());
   const [time, setTime] = React.useState<string>("");
   const [imageUrl, setImageUrl] = useState<string>("");
+  const formRef = useRef<HTMLFormElement>(null);
   const combinedValue = time
     ? `${time}, ${formatDate(date as Date, "PP")}`
     : formatDate(date as Date, "PP");
@@ -46,9 +47,19 @@ export default function AddAssignments(props: { courseId: string }) {
   //     toast.success("Class added successfully");
   //   }
   // }
+  async function handleSubmit(formData: FormData) {
+    try {
+      await addAssignment(formData);
+      toast.success("Assignment added successfully");
+      formRef.current?.reset();
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
   return (
     <div>
-      <form method="post" action={addAssignment}>
+      <form method="post" action={handleSubmit} ref={formRef}>
         <div className="p-5">
           <div className="p-3">
             <p> Enter Title : </p>
