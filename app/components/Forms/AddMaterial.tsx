@@ -55,19 +55,21 @@ export default function AddMaterial(props: { courseId: string }) {
             value={props.courseId}
           ></input>
           <p> Choose File : </p>
-          <UploadButton
-            className="ut-button:bg-neutral-800 justify-start"
-            endpoint="imageUploader"
-            onClientUploadComplete={(res) => {
-              // Do something with the response
-              console.log("Files: ", res);
-              setImageUrl(res[0].url);
-            }}
-            onUploadError={(error: Error) => {
-              // Do something with the error.
-              //   alert(`ERROR! ${error.message}`);
-            }}
-          />
+          <div className="flex justify-start">
+            <UploadButton
+              className="ut-button:bg-neutral-800 justify-start"
+              endpoint="imageUploader"
+              onClientUploadComplete={(res) => {
+                // Do something with the response
+                console.log("Files: ", res);
+                setImageUrl(res[0].url);
+              }}
+              onUploadError={(error: Error) => {
+                // Do something with the error.
+                //   alert(`ERROR! ${error.message}`);
+              }}
+            />
+          </div>
 
           {imageUrl.length ? (
             <div>
