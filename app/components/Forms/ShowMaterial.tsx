@@ -12,7 +12,7 @@ export default function ShowMaterial(props: { courseId: string }) {
     },
   });
   return (
-    <div className="p-5">
+    <div className="flex flex-col gap-3 mt-3">
       {isLoading ? (
         <p>Loading...</p>
       ) : (
