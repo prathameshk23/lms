@@ -30,8 +30,6 @@ export default function Home() {
           <p className="mt-2">L E A R N L Y</p>
         </h1>
         <div className="flex flex-row justify-center items-center gap-6 py-3">
-          <p>Features</p>
-          <p>Documents</p>
           <p>Contact Us</p>
           {/* <Dialog> */}
           {/*   <DialogTrigger asChild> */}
