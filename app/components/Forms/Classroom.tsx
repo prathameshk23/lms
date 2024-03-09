@@ -3,6 +3,7 @@ import { db } from "@/app/lib/db";
 import { getServerSession } from "next-auth";
 import { ChevronRight } from "lucide-react";
 import Image from "next/image";
+import CopyClip from "../clipcopy";
 
 export default async function Classroom(props: { courseId: string }) {
   const user = await getServerSession(authOptions);
@@ -31,7 +32,8 @@ export default async function Classroom(props: { courseId: string }) {
             {/* <CopyToClipboard text={courseid?.class_code}>
               <button>Copy to clipboard</button>
             </CopyToClipboard>{" "} */}
-            <p>{courseid?.class_code}</p>
+            {/* <p>{courseid?.class_code}</p> */}
+            <CopyClip text={courseid?.class_code as string} />
             {/* <div>
               {enrolledStudents?.map((students) => (
                 <div>{students.name}</div>

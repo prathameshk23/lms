@@ -30,6 +30,7 @@ export default function AddAnnouncement(props: { courseId: string }) {
         </div>
         <form className="flex" method="post" action={handleAddabounce}>
           <Input
+            placeholder="Add an announcement"
             id="anno"
             name="anno"
             value={announce}
