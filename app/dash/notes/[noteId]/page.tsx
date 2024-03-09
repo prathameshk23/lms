@@ -1,5 +1,12 @@
-"use client"
-import { Form,FormControl,FormField,FormItem,FormLabel,FormMessage } from "@/app/components/ui/form";
+"use client";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/app/components/ui/form";
 import React from "react";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -7,7 +14,7 @@ import { useForm } from "react-hook-form";
 import { Input } from "@/app/components/ui/input";
 import TipTap from "@/app/components/TipTap";
 import { Button } from "@/app/components/ui/button";
-import { addNotes } from "@/app/action";
+import { title } from "process";
 
 interface PageProps {
   params: {
@@ -39,13 +46,13 @@ const page = ({ params }: PageProps) => {
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values.title);
-     console.log(values.description);
+    console.log(values.description);
     // values.description;
   }
   return (
     <main className="py-8 px-28">
       <Form {...form}>
-        <form action={addNotes}>
+        <form>
           <FormField
             control={form.control}
             name="title"
@@ -54,7 +61,7 @@ const page = ({ params }: PageProps) => {
                 <FormLabel>Title :</FormLabel>
                 <FormControl>
                   <Input
-                  name="note_title"
+                    name="note_title"
                     className="border-1 border-black"
                     placeholder="Enter your Title here"
                   ></Input>
@@ -70,7 +77,11 @@ const page = ({ params }: PageProps) => {
               <FormItem>
                 <FormLabel>Description</FormLabel>
                 <FormControl>
-                  <TipTap description={field.value} onChange={field.onChange} />
+                  <TipTap
+                    description={field.value}
+                    onChange={field.onChange}
+                    title={title}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
