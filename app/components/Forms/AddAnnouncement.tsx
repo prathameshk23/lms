@@ -34,6 +34,7 @@ export default function AddAnnouncement(props: { courseId: string }) {
             name="anno"
             value={announce}
             onChange={(e) => setAnnounce(e.target.value)}
+            className="w-96"
           />
           <input
             type="text"

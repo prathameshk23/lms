@@ -51,6 +51,7 @@ export default function ShowAssignment(props: {
               ></iframe>
               <p>{assignmentInfo?.dueDate}</p>
               <p>
+                Grades:
                 <Grades assignmentId={props.assignmentId} />
               </p>
             </div>

@@ -7,17 +7,16 @@ import {
   FormLabel,
   FormMessage,
 } from "@/app/components/ui/form";
-import React from "react";
+import React, { useState } from "react";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Input } from "@/app/components/ui/input";
 import TipTap from "@/app/components/TipTap";
 import { Button } from "@/app/components/ui/button";
-import { addNotes } from "@/app/action";
-
 
 const page = () => {
+  const [title, setTitle] = useState("");
   const formSchema = z.object({
     title: z
       .string()
@@ -47,7 +46,7 @@ const page = () => {
   return (
     <main className="py-8 px-28">
       <Form {...form}>
-        <form method="post" action={addNotes}>
+        <form method="post">
           <FormField
             control={form.control}
             name="title"
@@ -59,6 +58,8 @@ const page = () => {
                     name="note_title"
                     className="border-1 border-black"
                     placeholder="Enter your Title here"
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
                   ></Input>
                 </FormControl>
                 <FormMessage />
@@ -72,18 +73,16 @@ const page = () => {
               <FormItem>
                 <FormLabel>Description</FormLabel>
                 <FormControl>
-                  <TipTap description={field.value} onChange={field.onChange} />
+                  <TipTap
+                    description={field.value}
+                    onChange={field.onChange}
+                    title={title}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
-          <div className="p-3">
-            <Button className="p-3" type="submit">
-              {" "}
-              Save
-            </Button>
-          </div>
         </form>
       </Form>
     </main>

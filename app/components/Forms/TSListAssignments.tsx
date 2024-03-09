@@ -16,6 +16,8 @@ export default function TeachListAssignments(props: { courseId: string }) {
     <div className="p-5 flex flex-col gap-3">
       {isLoading ? (
         <p>Loading...</p>
+      ) : assignments?.length === 0 ? (
+        <p>No assignments yet</p>
       ) : (
         assignments?.map((assignment) => (
           <Link

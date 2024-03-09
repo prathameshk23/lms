@@ -6,26 +6,26 @@ import { authOptions } from "./lib/auth";
 import { db } from "./lib/db";
 import { revalidatePath } from "next/cache";
 
-export async function addNotes(formData: FormData) {
-  const session = await getServerSession(authOptions);
-  const user = session?.user.id;
-  const data = {
-    title : formData.get("note_title"),
-    description: formData.get("not_desc"),
-  };
-  try {
-    const notes = await db.notes.create({
-      data: {
-        title: data.title as string,
-        content: data.description as string,
-        userId: user as string,
-      },
-    });
-    return notes
-  } catch (error) {
-    console.log(error);
-  }
-}
+// export async function addNotes(formData: FormData) {
+//   const session = await getServerSession(authOptions);
+//   const user = session?.user.id;
+//   const data = {
+//     title : formData.get("note_title"),
+//     description: formData.get("not_desc"),
+//   };
+//   try {
+//     const notes = await db.notes.create({
+//       data: {
+//         title: data.title as string,
+//         content: data.description as string,
+//         userId: user as string,
+//       },
+//     });
+//     return notes
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
 
 export async function addClass(formData: FormData) {
   const session = await getServerSession(authOptions);
@@ -75,7 +75,7 @@ export async function addMarks(formData: FormData) {
         obtainedMarks: data.obatinedMarks as string,
       },
     });
-    return obtMarks
+    return obtMarks;
   } catch (ex) {
     console.log(ex);
   }

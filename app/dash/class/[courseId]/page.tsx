@@ -12,11 +12,10 @@ interface PageProps {
 }
 
 const Page = async ({ params }: PageProps) => {
-  
   return (
     <div className="flex flex-col px-24 py-1">
       <Classroom courseId={params.courseId} />
-      <div className="flex gap-4">
+      <div className="flex gap-4 mt-4">
         <Link href={`/dash/class/${params.courseId}/materials`}>
           <button className="bg-black text-white p-3 rounded-md">
             Materials

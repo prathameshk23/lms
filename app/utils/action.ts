@@ -168,3 +168,30 @@ export async function getPublicMsg(courseId: string) {
   });
   return messages;
 }
+
+export async function addNotes(formData: FormData) {
+  const user = await getServerSession(authOptions);
+  const userId = user?.user.id;
+  const data = {
+    content: formData.get("content"),
+    title: formData.get("title"),
+  };
+
+  try {
+    const notes = await db.notes.create({
+      data: {
+        User: {
+          connect: {
+            id: userId,
+          },
+        },
+        content: data.content as string,
+        title: data.title as string,
+      },
+    });
+    console.log("Notes added successfully");
+    return notes;
+  } catch (error) {
+    console.log(error);
+  }
+}

@@ -25,7 +25,6 @@ export default function Grades(props: { assignmentId: string }) {
       ) : (
         submissions?.map((submission) => (
           <div key={submission.id}>
-            <div>Grades: </div>
             <div>
               {submission.student.name}: {submission.obtainedMarks}
             </div>

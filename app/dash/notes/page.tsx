@@ -1,4 +1,3 @@
-import { addNotes } from "@/app/action";
 import { FolderArchive, FolderPlus, MoreHorizontal } from "lucide-react";
 import Link from "next/link";
 import React from "react";
@@ -12,35 +11,26 @@ const page = () => {
         <div className="bg-white rounded-md p-3 px-5">
           <p className="font-bold p-3"> Recent Folder </p>
           <div className="flex gap-3">
-            <div className="bg-neutral-950 text-white p-3 w-52 rounded-md">
-              <div className="right-0 justify-items-end">
+            <div className="bg-neutral-950 text-white p-3 w-52 rounded-md flex flex-col justify-between items-center">
+              <div className="flex flex-row justify-end items-center w-full">
                 <MoreHorizontal />
               </div>
-
-              <div className="p-1">
+              <div className="flex flex-row gap-3">
                 <FolderArchive />
+                <p className="font-semibold">DS Notes</p>
               </div>
-              <p className="font-semibold">Movie Reviews</p>
             </div>
-            <button>
-              <div className="bg-neutral-950 text-white p-3 w-52 rounded-md">
-                <Link href="notes/new">
-                  <form method="post">
-                    {/* <Link href="/dash/notes/asdkjas"> */}
-                    <div className="right-0 justify-items-end">
-                      <MoreHorizontal />
-                    </div>
-
-                    <div className="p-1">
-                      <FolderPlus />
-                    </div>
-                    <button type="submit" className="font-semibold">
-                      Add Notes
-                    </button>
-                  </form>
-                </Link>
-              </div>
-            </button>
+            <div className="bg-neutral-950 text-white p-3 w-52 rounded-md flex flex-col justify-between items-center">
+              <Link href={"notes/new"}>
+                <div className="flex flex-row justify-end items-center w-full">
+                  <MoreHorizontal />
+                </div>
+                <div className="flex flex-row gap-3">
+                  <FolderArchive />
+                  <p className="font-semibold">Add Notes</p>
+                </div>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
