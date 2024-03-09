@@ -1,6 +1,7 @@
 import React from "react";
 import { User } from "lucide-react";
 import ListCourses from "@/app/components/Forms/ListCourses";
+import PreviousChat from "./PreviousChat";
 const ChatSidebar = () => {
   return (
     <section className="fixed flex flex-col px-24 py-6 w-fit">
@@ -18,7 +19,8 @@ const ChatSidebar = () => {
               Direct Message
             </p>
             <p className="flex gap-3 p-1">
-              <User /> Prathamesh Kulkarni
+              {/* <User /> Prathamesh Kulkarni */}
+              <PreviousChat />
             </p>
           </div>
         </div>
