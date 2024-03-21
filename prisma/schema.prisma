@@ -180,6 +180,8 @@ model Notes {
   userId   String
   User     User  @relation(fields: [userId], references: [id])
   title String?
+
+  @@index([userId])
 }
 // model Course {
 //   id         String  @id @default(cuid())
